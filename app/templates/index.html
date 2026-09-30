@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Kitaplar</h2>
+<table class="table table-bordered align-middle">
+  <thead class="table-light">
+    <tr><th>Başlık</th><th>Yazar</th><th>Durum</th><th></th></tr>
+  </thead>
+  <tbody>
+    {% for book in books %}
+    <tr>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>
+        {% if book.is_borrowed %}
+          <span class="badge bg-danger">Ödünçte</span>
+        {% else %}
+          <span class="badge bg-success">Mevcut</span>
+        {% endif %}
+      </td>
+      <td class="text-end">
+        <a href="{{ url_for('main.delete_book', title=book.title) }}" class="btn btn-danger btn-sm">Sil</a>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="4" class="empty-note">Henüz kitap yok.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2 class="mb-3 mt-4">Kim ne almış</h2>
+<table class="table table-bordered">
+  <thead class="table-light">
+    <tr><th>Üye</th><th>Kitap</th><th>Yazar</th></tr>
+  </thead>
+  <tbody>
+    {% set ns = namespace(count=0) %}
+    {% for member in members %}
+      {% for book in member.borrowed_books %}
+        {% set ns.count = ns.count + 1 %}
+        <tr>
+          <td>{{ member.name }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+        </tr>
+      {% endfor %}
+    {% endfor %}
+    {% if ns.count == 0 %}
+    <tr>
+      <td colspan="3" class="empty-note">Henüz ödünç yok.</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% endblock %}

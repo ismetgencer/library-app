@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Üye ekle</h2>
+<form method="POST" class="row g-3">
+  <div class="col-md-6">
+    <label class="form-label">Üye adı</label>
+    <input name="name" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Üye ekle</button>
+  </div>
+</form>
+{% endblock %}

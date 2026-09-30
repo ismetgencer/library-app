@@ -1,0 +1,58 @@
+body {
+  background: #f6f1e7;
+  color: #2c2416;
+}
+
+.library-nav {
+  background: #3e4a3a;
+}
+
+.library-nav .navbar-brand,
+.library-nav .nav-link {
+  color: #f6f1e7;
+}
+
+.library-nav .nav-link {
+  padding: 0.4rem 0.75rem;
+}
+
+.library-nav .nav-link:hover,
+.library-nav .nav-link:focus {
+  color: #f3d27a;
+}
+
+.page-card {
+  background: #fffdf8;
+  border: 1px solid #e4d8c4;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.page-card h2 {
+  font-size: 1.35rem;
+}
+
+.empty-note {
+  color: #6b5e4c;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #6d7f62;
+  box-shadow: 0 0 0 0.2rem rgba(62, 74, 58, 0.2);
+}
+
+.btn-primary {
+  background: #3e4a3a;
+  border-color: #3e4a3a;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #2f382c;
+  border-color: #2f382c;
+}
+
+.list-group-item {
+  background: transparent;
+}

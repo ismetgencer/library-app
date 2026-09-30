@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Kitap ekle</h2>
+<form method="POST" class="row g-3">
+  <div class="col-md-6">
+    <label class="form-label">Kitap adı</label>
+    <input name="title" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Yazar</label>
+    <input name="author" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">ISBN</label>
+    <input name="isbn" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Kitap ekle</button>
+  </div>
+</form>
+{% endblock %}

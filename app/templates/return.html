@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Kitap iade et</h2>
+{% set ns = namespace(count=0) %}
+{% for member in members %}
+  {% for book in member.borrowed_books %}
+    {% set ns.count = ns.count + 1 %}
+  {% endfor %}
+{% endfor %}
+{% if ns.count == 0 %}
+  <p class="empty-note mb-0">İade edilecek kitap yok.</p>
+{% else %}
+<form method="POST" class="row g-3">
+  <div class="col-md-8">
+    <label class="form-label">Ödünç kayıt</label>
+    <select name="loan" class="form-select" required>
+      {% for member in members %}
+        {% for book in member.borrowed_books %}
+          <option value="{{ member.member_id }}|{{ book.title }}">{{ book.title }} ({{ member.name }})</option>
+        {% endfor %}
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-danger">İade et</button>
+  </div>
+</form>
+{% endif %}
+{% endblock %}

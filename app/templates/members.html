@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Üyeler</h2>
+<ul class="list-group">
+  {% for member in members %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <div>{{ member.name }} <span class="text-muted">(no {{ member.member_id }})</span></div>
+        {% if member.borrowed_books %}
+          <div class="small empty-note">
+            Elinde:
+            {% for book in member.borrowed_books %}{{ book.title }}{% if not loop.last %}, {% endif %}{% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      <a href="/delete_member/{{ member.member_id }}" class="btn btn-danger btn-sm">Sil</a>
+    </li>
+  {% else %}
+    <li class="list-group-item empty-note">Henüz üye yok.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
